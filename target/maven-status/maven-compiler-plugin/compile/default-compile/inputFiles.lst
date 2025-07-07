@@ -1,0 +1,16 @@
+/workspace/src/main/java/com/chatapp/config/SecurityConfig.java
+/workspace/src/main/java/com/chatapp/entity/Message.java
+/workspace/src/main/java/com/chatapp/controller/WebController.java
+/workspace/src/main/java/com/chatapp/entity/User.java
+/workspace/src/main/java/com/chatapp/service/FriendshipService.java
+/workspace/src/main/java/com/chatapp/service/MessageService.java
+/workspace/src/main/java/com/chatapp/repository/UserRepository.java
+/workspace/src/main/java/com/chatapp/repository/MessageRepository.java
+/workspace/src/main/java/com/chatapp/controller/AuthController.java
+/workspace/src/main/java/com/chatapp/config/WebSocketConfig.java
+/workspace/src/main/java/com/chatapp/entity/Friendship.java
+/workspace/src/main/java/com/chatapp/controller/ChatController.java
+/workspace/src/main/java/com/chatapp/repository/FriendshipRepository.java
+/workspace/src/main/java/com/chatapp/ChatApplication.java
+/workspace/src/main/java/com/chatapp/service/UserService.java
+/workspace/src/main/java/com/chatapp/controller/WebSocketController.java

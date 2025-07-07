@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat - Java Chat App</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
+    <link href="/css/chat.css" rel="stylesheet">
+</head>
+<body>
+    <div class="chat-container">
+        <!-- Sidebar -->
+        <div class="chat-sidebar">
+            <!-- User Profile -->
+            <div class="user-profile">
+                <div class="d-flex align-items-center">
+                    <div class="user-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="user-info flex-grow-1">
+                        <h6 id="currentUserName" class="mb-0"></h6>
+                        <small id="currentUserStatus" class="text-success">Online</small>
+                    </div>
+                    <div class="dropdown">
+                        <button class="btn btn-link text-light" type="button" id="userMenu" data-bs-toggle="dropdown">
+                            <i class="fas fa-ellipsis-v"></i>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Search Users -->
+            <div class="search-section">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" id="userSearch" placeholder="Search users...">
+                    <button class="btn btn-primary" type="button" id="searchBtn">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+                <div id="searchResults" class="search-results"></div>
+            </div>
+
+            <!-- Navigation Tabs -->
+            <ul class="nav nav-tabs sidebar-tabs" id="sidebarTabs" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="conversations-tab" data-bs-toggle="tab" data-bs-target="#conversations" type="button" role="tab">
+                        <i class="fas fa-comments"></i> Chats
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="friends-tab" data-bs-toggle="tab" data-bs-target="#friends" type="button" role="tab">
+                        <i class="fas fa-users"></i> Friends
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="requests-tab" data-bs-toggle="tab" data-bs-target="#requests" type="button" role="tab">
+                        <i class="fas fa-user-clock"></i> Requests
+                        <span class="badge bg-danger ms-1 d-none" id="requestsBadge">0</span>
+                    </button>
+                </li>
+            </ul>
+
+            <!-- Tab Content -->
+            <div class="tab-content sidebar-content" id="sidebarTabContent">
+                <!-- Conversations Tab -->
+                <div class="tab-pane fade show active" id="conversations" role="tabpanel">
+                    <div id="conversationsList" class="conversations-list"></div>
+                </div>
+
+                <!-- Friends Tab -->
+                <div class="tab-pane fade" id="friends" role="tabpanel">
+                    <div id="friendsList" class="friends-list"></div>
+                </div>
+
+                <!-- Requests Tab -->
+                <div class="tab-pane fade" id="requests" role="tabpanel">
+                    <div id="requestsList" class="requests-list"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Chat Area -->
+        <div class="chat-main">
+            <!-- Welcome Screen -->
+            <div id="welcomeScreen" class="welcome-screen">
+                <div class="text-center">
+                    <i class="fas fa-comments fa-4x text-muted mb-3"></i>
+                    <h4 class="text-muted">Welcome to Java Chat App</h4>
+                    <p class="text-muted">Search for users and start a conversation</p>
+                </div>
+            </div>
+
+            <!-- Chat Header -->
+            <div id="chatHeader" class="chat-header d-none">
+                <div class="d-flex align-items-center">
+                    <div class="chat-user-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="chat-user-info">
+                        <h6 id="chatUserName" class="mb-0"></h6>
+                        <small id="chatUserStatus" class="text-muted">Last seen recently</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Messages Area -->
+            <div id="messagesArea" class="messages-area d-none">
+                <div id="messagesList" class="messages-list"></div>
+            </div>
+
+            <!-- Message Input -->
+            <div id="messageInput" class="message-input d-none">
+                <form id="messageForm" class="d-flex">
+                    <input type="text" class="form-control" id="messageContent" placeholder="Type a message..." autocomplete="off">
+                    <button type="submit" class="btn btn-primary ms-2">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Friend Request Modal -->
+    <div class="modal fade" id="friendRequestModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Friend Request</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Do you want to send a friend request to <strong id="friendRequestUserName"></strong>?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" id="sendFriendRequestBtn">Send Request</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1.6.1/dist/sockjs.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@stomp/stompjs@7.0.0/bundles/stomp.umd.min.js"></script>
+    <script src="/js/chat.js"></script>
+</body>
+</html>

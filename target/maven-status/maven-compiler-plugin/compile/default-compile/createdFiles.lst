@@ -1,0 +1,12 @@
+com/chatapp/config/WebSocketConfig.class
+com/chatapp/repository/UserRepository.class
+com/chatapp/service/FriendshipService.class
+com/chatapp/service/MessageService.class
+com/chatapp/entity/Message.class
+com/chatapp/entity/User.class
+com/chatapp/repository/FriendshipRepository.class
+com/chatapp/config/SecurityConfig.class
+com/chatapp/entity/Friendship.class
+com/chatapp/entity/Friendship$FriendshipStatus.class
+com/chatapp/controller/WebController.class
+com/chatapp/repository/MessageRepository.class
