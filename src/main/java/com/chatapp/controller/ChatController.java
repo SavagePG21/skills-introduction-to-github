@@ -7,6 +7,7 @@ import com.chatapp.service.FriendshipService;
 import com.chatapp.service.MessageService;
 import com.chatapp.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -35,19 +36,21 @@ public class ChatController {
     public ResponseEntity<?> searchUsers(@RequestParam String query, HttpSession session) {
         User currentUser = (User) session.getAttribute("currentUser");
         if (currentUser == null) {
-            return ResponseEntity.unauthorized().body(Map.of("success", false, "message", "Not authenticated"));
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Map.of("success", false, "message", "Not authenticated"));
         }
 
         List<User> users = userService.searchUsers(query);
         List<Map<String, Object>> userList = users.stream()
             .filter(u -> !u.getId().equals(currentUser.getId()))
-            .map(u -> Map.of(
-                "id", u.getId(),
-                "username", u.getUsername(),
-                "displayName", u.getDisplayName(),
-                "online", u.isOnline(),
-                "isFriend", friendshipService.areFriends(currentUser, u)
-            ))
+            .map(u -> {
+                Map<String, Object> userMap = new HashMap<>();
+                userMap.put("id", u.getId());
+                userMap.put("username", u.getUsername());
+                userMap.put("displayName", u.getDisplayName());
+                userMap.put("online", u.isOnline());
+                userMap.put("isFriend", friendshipService.areFriends(currentUser, u));
+                return userMap;
+            })
             .collect(Collectors.toList());
 
         return ResponseEntity.ok(Map.of("success", true, "users", userList));
@@ -57,7 +60,7 @@ public class ChatController {
     public ResponseEntity<?> addFriend(@RequestBody Map<String, Long> request, HttpSession session) {
         User currentUser = (User) session.getAttribute("currentUser");
         if (currentUser == null) {
-            return ResponseEntity.unauthorized().body(Map.of("success", false, "message", "Not authenticated"));
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Map.of("success", false, "message", "Not authenticated"));
         }
 
         try {
@@ -81,17 +84,19 @@ public class ChatController {
     public ResponseEntity<?> getFriends(HttpSession session) {
         User currentUser = (User) session.getAttribute("currentUser");
         if (currentUser == null) {
-            return ResponseEntity.unauthorized().body(Map.of("success", false, "message", "Not authenticated"));
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Map.of("success", false, "message", "Not authenticated"));
         }
 
         List<User> friends = friendshipService.getFriends(currentUser);
         List<Map<String, Object>> friendList = friends.stream()
-            .map(f -> Map.of(
-                "id", f.getId(),
-                "username", f.getUsername(),
-                "displayName", f.getDisplayName(),
-                "online", f.isOnline()
-            ))
+            .map(f -> {
+                Map<String, Object> friendMap = new HashMap<>();
+                friendMap.put("id", f.getId());
+                friendMap.put("username", f.getUsername());
+                friendMap.put("displayName", f.getDisplayName());
+                friendMap.put("online", f.isOnline());
+                return friendMap;
+            })
             .collect(Collectors.toList());
 
         return ResponseEntity.ok(Map.of("success", true, "friends", friendList));
@@ -101,20 +106,22 @@ public class ChatController {
     public ResponseEntity<?> getFriendRequests(HttpSession session) {
         User currentUser = (User) session.getAttribute("currentUser");
         if (currentUser == null) {
-            return ResponseEntity.unauthorized().body(Map.of("success", false, "message", "Not authenticated"));
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Map.of("success", false, "message", "Not authenticated"));
         }
 
         List<Friendship> requests = friendshipService.getPendingFriendRequests(currentUser);
         List<Map<String, Object>> requestList = requests.stream()
-            .map(r -> Map.of(
-                "id", r.getId(),
-                "user", Map.of(
-                    "id", r.getUser().getId(),
-                    "username", r.getUser().getUsername(),
-                    "displayName", r.getUser().getDisplayName()
-                ),
-                "createdAt", r.getCreatedAt().format(DateTimeFormatter.ISO_LOCAL_DATE_TIME)
-            ))
+            .map(r -> {
+                Map<String, Object> requestMap = new HashMap<>();
+                Map<String, Object> userMap = new HashMap<>();
+                userMap.put("id", r.getUser().getId());
+                userMap.put("username", r.getUser().getUsername());
+                userMap.put("displayName", r.getUser().getDisplayName());
+                requestMap.put("id", r.getId());
+                requestMap.put("user", userMap);
+                requestMap.put("createdAt", r.getCreatedAt().format(DateTimeFormatter.ISO_LOCAL_DATE_TIME));
+                return requestMap;
+            })
             .collect(Collectors.toList());
 
         return ResponseEntity.ok(Map.of("success", true, "requests", requestList));
@@ -124,7 +131,7 @@ public class ChatController {
     public ResponseEntity<?> acceptFriendRequest(@RequestBody Map<String, Long> request, HttpSession session) {
         User currentUser = (User) session.getAttribute("currentUser");
         if (currentUser == null) {
-            return ResponseEntity.unauthorized().body(Map.of("success", false, "message", "Not authenticated"));
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Map.of("success", false, "message", "Not authenticated"));
         }
 
         try {
@@ -141,7 +148,7 @@ public class ChatController {
     public ResponseEntity<?> declineFriendRequest(@RequestBody Map<String, Long> request, HttpSession session) {
         User currentUser = (User) session.getAttribute("currentUser");
         if (currentUser == null) {
-            return ResponseEntity.unauthorized().body(Map.of("success", false, "message", "Not authenticated"));
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Map.of("success", false, "message", "Not authenticated"));
         }
 
         try {
@@ -158,7 +165,7 @@ public class ChatController {
     public ResponseEntity<?> getConversation(@PathVariable Long userId, HttpSession session) {
         User currentUser = (User) session.getAttribute("currentUser");
         if (currentUser == null) {
-            return ResponseEntity.unauthorized().body(Map.of("success", false, "message", "Not authenticated"));
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Map.of("success", false, "message", "Not authenticated"));
         }
 
         Optional<User> otherUserOpt = userService.findById(userId);
@@ -173,14 +180,16 @@ public class ChatController {
         messageService.markMessagesAsRead(otherUser, currentUser);
 
         List<Map<String, Object>> messageList = messages.stream()
-            .map(m -> Map.of(
-                "id", m.getId(),
-                "content", m.getContent(),
-                "senderId", m.getSender().getId(),
-                "senderName", m.getSender().getDisplayName(),
-                "sentAt", m.getSentAt().format(DateTimeFormatter.ISO_LOCAL_DATE_TIME),
-                "isRead", m.isRead()
-            ))
+            .map(m -> {
+                Map<String, Object> messageMap = new HashMap<>();
+                messageMap.put("id", m.getId());
+                messageMap.put("content", m.getContent());
+                messageMap.put("senderId", m.getSender().getId());
+                messageMap.put("senderName", m.getSender().getDisplayName());
+                messageMap.put("sentAt", m.getSentAt().format(DateTimeFormatter.ISO_LOCAL_DATE_TIME));
+                messageMap.put("isRead", m.isRead());
+                return messageMap;
+            })
             .collect(Collectors.toList());
 
         return ResponseEntity.ok(Map.of("success", true, "messages", messageList));
@@ -190,7 +199,7 @@ public class ChatController {
     public ResponseEntity<?> getConversations(HttpSession session) {
         User currentUser = (User) session.getAttribute("currentUser");
         if (currentUser == null) {
-            return ResponseEntity.unauthorized().body(Map.of("success", false, "message", "Not authenticated"));
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Map.of("success", false, "message", "Not authenticated"));
         }
 
         List<User> conversationPartners = messageService.getConversationPartners(currentUser);
@@ -200,19 +209,19 @@ public class ChatController {
                 Message lastMessage = messages.isEmpty() ? null : messages.get(messages.size() - 1);
                 
                 Map<String, Object> conversation = new HashMap<>();
-                conversation.put("user", Map.of(
-                    "id", partner.getId(),
-                    "username", partner.getUsername(),
-                    "displayName", partner.getDisplayName(),
-                    "online", partner.isOnline()
-                ));
+                Map<String, Object> userMap = new HashMap<>();
+                userMap.put("id", partner.getId());
+                userMap.put("username", partner.getUsername());
+                userMap.put("displayName", partner.getDisplayName());
+                userMap.put("online", partner.isOnline());
+                conversation.put("user", userMap);
                 
                 if (lastMessage != null) {
-                    conversation.put("lastMessage", Map.of(
-                        "content", lastMessage.getContent(),
-                        "sentAt", lastMessage.getSentAt().format(DateTimeFormatter.ISO_LOCAL_DATE_TIME),
-                        "senderName", lastMessage.getSender().getDisplayName()
-                    ));
+                    Map<String, Object> lastMessageMap = new HashMap<>();
+                    lastMessageMap.put("content", lastMessage.getContent());
+                    lastMessageMap.put("sentAt", lastMessage.getSentAt().format(DateTimeFormatter.ISO_LOCAL_DATE_TIME));
+                    lastMessageMap.put("senderName", lastMessage.getSender().getDisplayName());
+                    conversation.put("lastMessage", lastMessageMap);
                 }
                 
                 return conversation;

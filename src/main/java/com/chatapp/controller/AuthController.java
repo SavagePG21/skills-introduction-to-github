@@ -3,6 +3,7 @@ package com.chatapp.controller;
 import com.chatapp.entity.User;
 import com.chatapp.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -116,7 +117,7 @@ public class AuthController {
             Map<String, Object> response = new HashMap<>();
             response.put("success", false);
             response.put("message", "Not authenticated");
-            return ResponseEntity.unauthorized().body(response);
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(response);
         }
 
         Map<String, Object> response = new HashMap<>();
