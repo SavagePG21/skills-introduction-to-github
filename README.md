@@ -1,51 +1,157 @@
-# Introduction to GitHub
+# WebCraft Studio - Modern Web Development Platform
 
-_Get started using GitHub in less than an hour._
+WebCraft Studio is a comprehensive, modern web development platform that combines visual design tools with a powerful code editor. It's designed to empower both beginners and experienced developers to create stunning websites and applications with ease.
 
-## Welcome
+## 🚀 Features
 
-People use GitHub to build some of the most advanced technologies in the world. Whether you’re visualizing data or building a new game, there’s a whole community and set of tools on GitHub that can help you do it even better. GitHub Skills’ “Introduction to GitHub” exercise guides you through everything you need to start contributing in less than an hour.
+### 🎨 Visual Designer
+- **Drag & Drop Interface**: Intuitive element placement with visual feedback
+- **Interactive Elements**: Text, buttons, images, and containers
+- **Real-time Editing**: Live property adjustment with sliders and color pickers
+- **Element Management**: Select, move, copy, paste, and delete elements
+- **Export Functionality**: Export designs to clean HTML files
+- **Auto-save**: Designs are automatically saved to local storage
 
-- **Who is this for**: New developers, new GitHub users, and students.
-- **What you'll learn**: We'll introduce repositories, branches, commits, and pull requests.
-- **What you'll build**: We'll make a short Markdown file you can use as your [profile README](https://docs.github.com/account-and-profile/setting-up-and-managing-your-github-profile/customizing-your-profile/managing-your-profile-readme).
-- **Prerequisites**: None. This exercise is a great introduction for your first day on GitHub.
-- **How long**: This exercise takes less than one hour to complete.
+### 💻 Code Editor
+- **Multi-language Support**: HTML, CSS, and JavaScript templates
+- **Live Preview**: Real-time code execution and preview
+- **Code Formatting**: Automatic code beautification
+- **Syntax Highlighting**: Clean, readable code display
+- **Auto-save**: Code is automatically saved as you type
 
-In this exercise, you will:
+### 📁 Project Management
+- **Project Overview**: Manage multiple projects with metadata
+- **Quick Actions**: Create, edit, and delete projects
+- **Project Templates**: Pre-built project structures
 
-1. Create a branch
-2. Commit a file
-3. Open a pull request
-4. Merge your pull request
+### 📱 Responsive Design
+- **Mobile-first**: Fully responsive design that works on all devices
+- **Modern UI**: Beautiful, glassmorphism-inspired interface
+- **Smooth Animations**: Elegant transitions and hover effects
 
-### How to start this exercise
+## 🛠️ Technologies Used
 
-1. Right-click **Copy Exercise** and open the link in a new tab.
+- **HTML5**: Semantic markup and modern web standards
+- **CSS3**: Advanced styling with gradients, animations, and responsive design
+- **JavaScript ES6+**: Modern JavaScript with interactive functionality
+- **Font Awesome**: Beautiful icons and visual elements
+- **Local Storage**: Client-side data persistence
 
-   <a id="copy-exercise">
-      <img src="https://img.shields.io/badge/📠_Copy_Exercise-AAA" height="25pt"/>
-   </a>
+## 🚀 Getting Started
 
-2. In the new tab, most of the prompts will automatically fill in for you.
-   - For owner, choose your personal account or an organization to host the repository.
-   - We recommend creating a public repository, as private repositories will [use Actions minutes](https://docs.github.chttps://github.com/SavagePG21/skills-introduction-to-github/billing/managing-billing-for-github-actions/about-billing-for-github-actions).
-   - Scroll down and click the **Create repository** button at the bottom of the form.
+### Prerequisites
+- A modern web browser (Chrome, Firefox, Safari, Edge)
+- A local web server (optional, for testing)
 
-3. After your new repository is created, wait about 20 seconds for the exercise to be prepared and buttons updated. You will continue working from your copy of the exercise.
-   - The **Copy Exercise** button will deactivate, changing to gray.
-   - The **Start Exercise** button will activate, changing to green.
-   - You will likely need to refresh the page.
+### Installation
+1. Clone or download this repository
+2. Open `index.html` in your web browser, or
+3. Use a local server:
+   ```bash
+   # Using Python
+   python3 -m http.server 8000
+   
+   # Using Node.js
+   npx serve .
+   
+   # Using PHP
+   php -S localhost:8000
+   ```
 
-4. Click **Start Exercise**. Follow the step-by-step instructions and feedback will be provided as you progress.
+### Usage
 
-   <a id="start-exercise" href="https://github.com/SavagePG21/skills-introduction-to-github/issues/1">
-      <img src="https://img.shields.io/badge/🚀_Start_Exercise-008000" height="25pt"/>
-   </a>
+#### Using the Designer
+1. Navigate to the **Designer** page
+2. Drag elements from the sidebar to the canvas
+3. Click elements to select and modify them
+4. Use the color palette and property controls to customize
+5. Right-click elements for additional options
+6. Save your design or export to HTML
 
-> [!IMPORTANT]
-> The **Start Exercise** button will activate after copying the repository. You will probably need to refresh the page.
+#### Using the Code Editor
+1. Navigate to the **Code Editor** page
+2. Choose your language tab (HTML, CSS, JavaScript)
+3. Write your code in the editor
+4. Click "Run Code" to see the live preview
+5. Use "Format" to beautify your code
+
+#### Keyboard Shortcuts
+- `Delete`: Remove selected element
+- `Ctrl+C`: Copy selected element
+- `Ctrl+V`: Paste element
+- `Ctrl+S`: Save design
+
+## 🎯 Key Features
+
+### Design Tools
+- **Element Library**: Pre-built components for quick design
+- **Color System**: Predefined palette plus custom color picker
+- **Property Panel**: Real-time adjustment of font size, padding, border radius
+- **Canvas Controls**: Clear, save, and export functionality
+
+### Interactive Features
+- **Drag & Drop**: Smooth element placement
+- **Context Menus**: Right-click for advanced options
+- **History System**: Undo/redo capability (keyboard shortcuts)
+- **Selection System**: Visual feedback for selected elements
+
+### Export & Save
+- **HTML Export**: Clean, production-ready HTML files
+- **Local Storage**: Automatic saving of designs and code
+- **Project Management**: Organize and manage multiple projects
+
+## 🎨 Design Philosophy
+
+WebCraft Studio follows modern design principles:
+- **Minimalism**: Clean, uncluttered interface
+- **Accessibility**: High contrast, readable fonts, intuitive navigation
+- **Performance**: Optimized for speed and responsiveness
+- **User Experience**: Smooth interactions and helpful feedback
+
+## 🔧 Customization
+
+The application is highly customizable:
+- Modify `styles.css` to change the appearance
+- Extend `script.js` to add new functionality
+- Add new element types in the designer
+- Create custom color palettes
+
+## 📱 Browser Support
+
+WebCraft Studio supports all modern browsers:
+- Chrome 70+
+- Firefox 65+
+- Safari 12+
+- Edge 79+
+
+## 🤝 Contributing
+
+We welcome contributions! Here's how you can help:
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Test thoroughly
+5. Submit a pull request
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+- Font Awesome for the beautiful icons
+- Modern CSS techniques and best practices
+- The web development community for inspiration
+
+## 📞 Support
+
+If you have questions or need help:
+- Check the documentation
+- Look through existing issues
+- Create a new issue with detailed information
 
 ---
 
-&copy; 2025 GitHub &bull; [Code of Conduct](https://www.contributor-covenant.org/version/2/1/code_of_conduct/code_of_conduct.md) &bull; [MIT License](https://gh.io/mit)
+**Built with ❤️ for the web development community**
+
+WebCraft Studio - Where creativity meets code!
