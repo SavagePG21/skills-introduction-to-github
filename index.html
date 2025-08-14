@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebCraft Studio - Modern Web Development Platform</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-code"></i>
+                WebCraft Studio
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="#home" class="nav-link active" data-page="home">
+                        <i class="fas fa-home"></i> Home
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#designer" class="nav-link" data-page="designer">
+                        <i class="fas fa-palette"></i> Designer
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#code-editor" class="nav-link" data-page="code-editor">
+                        <i class="fas fa-code"></i> Code Editor
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#projects" class="nav-link" data-page="projects">
+                        <i class="fas fa-folder"></i> Projects
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#about" class="nav-link" data-page="about">
+                        <i class="fas fa-info-circle"></i> About
+                    </a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Home Page -->
+        <section id="home" class="page active">
+            <div class="hero">
+                <div class="hero-content">
+                    <h1>Welcome to WebCraft Studio</h1>
+                    <p>Your all-in-one platform for modern web development and design</p>
+                    <div class="hero-buttons">
+                        <button class="btn btn-primary" onclick="showPage('designer')">
+                            <i class="fas fa-palette"></i> Start Designing
+                        </button>
+                        <button class="btn btn-secondary" onclick="showPage('code-editor')">
+                            <i class="fas fa-code"></i> Code Editor
+                        </button>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="floating-card">
+                        <div class="card-header"></div>
+                        <div class="card-content">
+                            <div class="line"></div>
+                            <div class="line short"></div>
+                            <div class="line"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="features">
+                <div class="container">
+                    <h2>Features</h2>
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-palette"></i>
+                            </div>
+                            <h3>Visual Designer</h3>
+                            <p>Create stunning designs with our intuitive drag-and-drop interface</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <h3>Code Editor</h3>
+                            <p>Write and edit code with syntax highlighting and auto-completion</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-mobile-alt"></i>
+                            </div>
+                            <h3>Responsive Design</h3>
+                            <p>Create websites that look great on all devices</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-cloud"></i>
+                            </div>
+                            <h3>Cloud Storage</h3>
+                            <p>Save and sync your projects across all devices</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Designer Page -->
+        <section id="designer" class="page">
+            <div class="designer-container">
+                <div class="designer-sidebar">
+                    <h3>Design Tools</h3>
+                    
+                    <div class="tool-section">
+                        <h4>Elements</h4>
+                        <div class="element-grid">
+                            <div class="element-item" data-element="text" title="Add Text">
+                                <i class="fas fa-font"></i>
+                                <span>Text</span>
+                            </div>
+                            <div class="element-item" data-element="button" title="Add Button">
+                                <i class="fas fa-square"></i>
+                                <span>Button</span>
+                            </div>
+                            <div class="element-item" data-element="image" title="Add Image">
+                                <i class="fas fa-image"></i>
+                                <span>Image</span>
+                            </div>
+                            <div class="element-item" data-element="container" title="Add Container">
+                                <i class="fas fa-square-full"></i>
+                                <span>Container</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tool-section">
+                        <h4>Colors</h4>
+                        <div class="color-palette">
+                            <div class="color-item" data-color="#3498db" style="background-color: #3498db;"></div>
+                            <div class="color-item" data-color="#e74c3c" style="background-color: #e74c3c;"></div>
+                            <div class="color-item" data-color="#2ecc71" style="background-color: #2ecc71;"></div>
+                            <div class="color-item" data-color="#f39c12" style="background-color: #f39c12;"></div>
+                            <div class="color-item" data-color="#9b59b6" style="background-color: #9b59b6;"></div>
+                            <div class="color-item" data-color="#1abc9c" style="background-color: #1abc9c;"></div>
+                            <div class="color-item" data-color="#34495e" style="background-color: #34495e;"></div>
+                            <div class="color-item" data-color="#95a5a6" style="background-color: #95a5a6;"></div>
+                        </div>
+                        <input type="color" id="custom-color" class="color-picker" value="#3498db">
+                    </div>
+
+                    <div class="tool-section">
+                        <h4>Properties</h4>
+                        <div class="properties-panel">
+                            <div class="property-group">
+                                <label>Font Size:</label>
+                                <input type="range" id="font-size" min="12" max="48" value="16">
+                                <span id="font-size-value">16px</span>
+                            </div>
+                            <div class="property-group">
+                                <label>Padding:</label>
+                                <input type="range" id="padding" min="0" max="50" value="10">
+                                <span id="padding-value">10px</span>
+                            </div>
+                            <div class="property-group">
+                                <label>Border Radius:</label>
+                                <input type="range" id="border-radius" min="0" max="50" value="5">
+                                <span id="border-radius-value">5px</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="designer-canvas">
+                    <div class="canvas-header">
+                        <div class="canvas-controls">
+                            <button class="btn btn-small" id="clear-canvas">
+                                <i class="fas fa-trash"></i> Clear
+                            </button>
+                            <button class="btn btn-small" id="save-design">
+                                <i class="fas fa-save"></i> Save
+                            </button>
+                            <button class="btn btn-small" id="export-html">
+                                <i class="fas fa-download"></i> Export HTML
+                            </button>
+                        </div>
+                    </div>
+                    <div class="canvas" id="design-canvas">
+                        <div class="canvas-placeholder">
+                            <i class="fas fa-mouse-pointer"></i>
+                            <p>Start designing by dragging elements from the sidebar</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Code Editor Page -->
+        <section id="code-editor" class="page">
+            <div class="editor-container">
+                <div class="editor-tabs">
+                    <div class="tab active" data-lang="html">
+                        <i class="fab fa-html5"></i> HTML
+                    </div>
+                    <div class="tab" data-lang="css">
+                        <i class="fab fa-css3-alt"></i> CSS
+                    </div>
+                    <div class="tab" data-lang="js">
+                        <i class="fab fa-js-square"></i> JavaScript
+                    </div>
+                </div>
+                <div class="editor-content">
+                    <textarea id="code-editor-textarea" placeholder="Write your code here...">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Project</title>
+</head>
+<body>
+    <h1>Hello World!</h1>
+    <p>Start coding your amazing project here.</p>
+</body>
+</html>
+                    </textarea>
+                </div>
+                <div class="editor-controls">
+                    <button class="btn btn-primary" id="run-code">
+                        <i class="fas fa-play"></i> Run Code
+                    </button>
+                    <button class="btn btn-secondary" id="format-code">
+                        <i class="fas fa-magic"></i> Format
+                    </button>
+                </div>
+                <div class="preview-container">
+                    <h3>Preview</h3>
+                    <iframe id="code-preview" src="about:blank"></iframe>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Page -->
+        <section id="projects" class="page">
+            <div class="container">
+                <div class="page-header">
+                    <h2>My Projects</h2>
+                    <button class="btn btn-primary" id="new-project">
+                        <i class="fas fa-plus"></i> New Project
+                    </button>
+                </div>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="project-thumbnail">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <div class="project-info">
+                            <h3>Portfolio Website</h3>
+                            <p>Personal portfolio with modern design</p>
+                            <div class="project-meta">
+                                <span class="project-date">2 days ago</span>
+                                <span class="project-type">HTML/CSS</span>
+                            </div>
+                        </div>
+                        <div class="project-actions">
+                            <button class="btn btn-small">Edit</button>
+                            <button class="btn btn-small btn-outline">Delete</button>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-thumbnail">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                        <div class="project-info">
+                            <h3>E-commerce Site</h3>
+                            <p>Online store with product catalog</p>
+                            <div class="project-meta">
+                                <span class="project-date">1 week ago</span>
+                                <span class="project-type">React</span>
+                            </div>
+                        </div>
+                        <div class="project-actions">
+                            <button class="btn btn-small">Edit</button>
+                            <button class="btn btn-small btn-outline">Delete</button>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-thumbnail">
+                            <i class="fas fa-blog"></i>
+                        </div>
+                        <div class="project-info">
+                            <h3>Blog Platform</h3>
+                            <p>Content management system</p>
+                            <div class="project-meta">
+                                <span class="project-date">2 weeks ago</span>
+                                <span class="project-type">Vue.js</span>
+                            </div>
+                        </div>
+                        <div class="project-actions">
+                            <button class="btn btn-small">Edit</button>
+                            <button class="btn btn-small btn-outline">Delete</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Page -->
+        <section id="about" class="page">
+            <div class="container">
+                <div class="about-content">
+                    <h2>About WebCraft Studio</h2>
+                    <p>WebCraft Studio is a modern, comprehensive web development platform designed to empower developers and designers to create stunning websites and applications with ease.</p>
+                    
+                    <div class="about-features">
+                        <div class="about-feature">
+                            <h3>Our Mission</h3>
+                            <p>To democratize web development by providing powerful, easy-to-use tools that enable anyone to create professional websites and applications.</p>
+                        </div>
+                        <div class="about-feature">
+                            <h3>Our Vision</h3>
+                            <p>To be the leading platform for collaborative web development, fostering creativity and innovation in the digital space.</p>
+                        </div>
+                        <div class="about-feature">
+                            <h3>Our Values</h3>
+                            <ul>
+                                <li>Simplicity in complex tasks</li>
+                                <li>Accessibility for all skill levels</li>
+                                <li>Innovation in web technologies</li>
+                                <li>Community-driven development</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
